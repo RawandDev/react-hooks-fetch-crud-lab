@@ -35,7 +35,7 @@ function QuestionForm(props) {
       .then((data) => console.log(data));
     console.log(formData);
   }
-
+  
   return (
     <section>
       <h1>New Question</h1>

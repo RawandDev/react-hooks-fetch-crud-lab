@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import QuestionItem from "./QuestionItem";
 
 function QuestionList() {
-
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
@@ -11,11 +10,23 @@ function QuestionList() {
       .then((data) => setQuestions(data));
   }, []);
 
-  console.log(questions);
+  // console.log(questions);
 
-  const getQuestion = questions.map(question => {
+  function onDelete(id) {
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((_data) => {
+        const newQuestions = questions.filter((question) => question.id !== id);
+        setQuestions(newQuestions);
+        // console.log(newQuestions);
+      });
+  }
+
+  const getQuestion = questions.map((question) => {
     return (
-      <QuestionItem question={question} key={question.id} />
+      <QuestionItem question={question} key={question.id} onDelete={onDelete} />
     );
   });
 

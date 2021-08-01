@@ -27,7 +27,7 @@ function QuestionForm(props) {
       body: JSON.stringify({
         prompt: formData.prompt,
         answers: [answer1, answer2, answer3, answer4],
-        correctIndex: formData.correctIndex,
+        correctIndex: correctIndex,
       }),
     };
     fetch("http://localhost:4000/questions", requestOptions)

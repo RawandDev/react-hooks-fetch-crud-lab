@@ -10,6 +10,18 @@
       ],
       "correctIndex": 0,
       "id": 2
+    },
+    {
+      "prompt": "a 2 is correct",
+      "answers": [
+        "I'm correct",
+        "No me",
+        "Yes",
+        "No"
+      ],
+      "correctIndex": "1",
+      "id": 3,
+      "correctAnswer": 0
     }
   ]
 }

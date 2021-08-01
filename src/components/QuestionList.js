@@ -24,9 +24,29 @@ function QuestionList() {
       });
   }
 
+  // onChangeCorrectAnswer is a function that takes the question id and the new correct answer
+  function handleCorrectAnswer(id, newCorrectAnswer) {
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ correctAnswer: newCorrectAnswer }),
+    })
+      .then((response) => response.json())
+      .then((_data) => {
+        console.log(_data);
+      });
+  }
+
   const getQuestion = questions.map((question) => {
     return (
-      <QuestionItem question={question} key={question.id} onDelete={onDelete} />
+      <QuestionItem
+        question={question}
+        key={question.id}
+        onDelete={onDelete}
+        onChangeCorrectAnswer={handleCorrectAnswer}
+      />
     );
   });
 
